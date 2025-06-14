@@ -17,6 +17,7 @@ Dataset
 Parameters Used: 9 textual features (e.g., TF-IDF vectors, sentiment scores, readability metrics, etc.)
 
 Project Structure and File Descriptions
+
 1.fake news detection proj.ipynb: This Jupyter Notebook contains the complete workflow for the project, including exploratory data analysis (EDA), data preprocessing, feature engineering, model training and evaluation, and visualization of results such as confusion matrices and ROC curves.
 2.app.py:A Streamlit-based interactive web application that uses the trained SVM model to provide real-time fake news predictions. It also integrates OpenAI API for claim extraction and Google Fact Check API for external verification.
 3.predict_usernews.py:A Python script designed to take user input or news text and generate fake news predictions using the trained model. This script can be used independently or integrated into other applications.
