@@ -54,7 +54,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- Securely load API key ---
 load_dotenv("api.env")
 openai_api_key = os.getenv("OPEN_AI_API_KEY")
 factcheck_api_key = os.getenv("FACT_CHECK_API_KEY")
@@ -62,7 +61,6 @@ API_KEY = factcheck_api_key
 API_URL = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
 client = OpenAI(api_key=openai_api_key)
 
-# --- Text preprocessing ---
 lemmatizer = WordNetLemmatizer()
 stop_words = set(stopwords.words('english'))
 
@@ -145,7 +143,7 @@ def extract_claims(text):
         return [text]
 
 
-# --- Main Interface ---
+
 with st.container():
     col1, col2 = st.columns([0.8, 0.2])
     with col1:
@@ -156,7 +154,7 @@ with st.container():
         </div>
     """, unsafe_allow_html=True)
 
-# --- Load Model ---
+
 @st.cache_resource(show_spinner="Loading model...")
 def load_pipeline():
     return joblib.load("pipeline_with_linearSVC.joblib")
@@ -173,7 +171,7 @@ with st.form(key='prediction_form'):
     with submit_col:
         submitted = st.form_submit_button("🔍 Analyze Content", use_container_width=True)
 
-# --- Results Display ---
+
 if submitted:
     if not user_text.strip():
         st.warning("Please enter some text to analyze.")
@@ -239,7 +237,7 @@ if submitted:
             else:
                 st.info("No external fact-check results found for the extracted claims.")
 
-# --- Enhanced Sidebar ---
+
 with st.sidebar:
     st.markdown("""
         <div style='padding: 1rem; background: #1a3345; border-radius: 8px; color: white;'>
