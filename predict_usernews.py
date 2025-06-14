@@ -13,7 +13,6 @@ import pandas as pd
 lemmatizer = WordNetLemmatizer()
 stop_words = set(stopwords.words('english'))
 
-# Define your preprocessing function
 def clean_text(text):
     text = text.lower()
     text = re.sub(r'http\S+|www\S+|https\S+', '', text)
@@ -25,7 +24,6 @@ def clean_text(text):
     tokens = [lemmatizer.lemmatize(word) for word in tokens]
     return ' '.join(tokens)
 
-# Define your custom transformer
 class TextCleaner(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
         return self
